@@ -47,14 +47,20 @@ onUiLoaded(() => setTimeout(() => {
     groups.forEach(group => {
       const accordions = group.querySelectorAll('div.block.gradio-accordion:not(.hide):not(.hidden)');
       accordions.forEach(accordion => {
-        if (accordion.classList.contains('input-accordion')) {
-          const input = accordion.visibleCheckbox;
-          if (input) {
-            const o = accordion.onVisibleCheckboxChange;
-            accordion.onVisibleCheckboxChange = function() {
-              o.call(this);
-              accordion.classList.toggle('T', input.checked);
-            };
+        if (accordion.classList.contains('input-accordion') || accordion.classList.contains('input-accordion-m')) {
+          const visibleCheckbox = accordion.querySelector('.input-accordion-checkbox');
+          if (visibleCheckbox) {
+            if (accordion.onVisibleCheckboxChange) {
+              const originalHandler = accordion.onVisibleCheckboxChange;
+              accordion.onVisibleCheckboxChange = function() {
+                originalHandler.call(this);
+                accordion.classList.toggle('T', visibleCheckbox.checked);
+              };
+            } else {
+              visibleCheckbox.addEventListener('input', function() {
+                accordion.classList.toggle('T', this.checked);
+              });
+            }
           }
         } else {
           const wrappers = accordion.querySelectorAll('.gradio-checkbox');
