@@ -57,9 +57,7 @@ onUiLoaded(() => setTimeout(() => {
                 accordion.classList.toggle('T', visibleCheckbox.checked);
               };
             } else {
-              visibleCheckbox.addEventListener('input', function() {
-                accordion.classList.toggle('T', this.checked);
-              });
+              visibleCheckbox.addEventListener('input', function() { accordion.classList.toggle('T', this.checked); });
             }
           }
         } else {
