@@ -1,0 +1,30 @@
+
+:root {
+  --sd-misc-bsc: #818181;
+}
+
+.dark {
+  --sd-misc-bsc: var(--block-border-color);
+}
+
+#tab_txt2img #txt2img_script_container div.block.gradio-accordion,
+#tab_img2img #img2img_script_container div.block.gradio-accordion {
+  border: 0 !important;
+  box-shadow: 0 0 1px 1px var(--sd-misc-bsc);
+}
+
+#tab_txt2img #txt2img_script_container div.block.gradio-accordion.T,
+#tab_img2img #img2img_script_container div.block.gradio-accordion.T {
+  box-shadow: 0 0 1px 1px var(--primary-400), inset 0 0 7px 0 var(--primary-400), 0 0 7px 0 var(--primary-400);
+}
+
+.gradio-container-4-40-0 #txt2img_script_container > .styler,
+.gradio-container-4-40-0 #txt2img_script_container > .styler > .gr-group > .styler,
+.gradio-container-4-40-0 #img2img_script_container > .styler,
+.gradio-container-4-40-0 #img2img_script_container > .styler > .gr-group > .styler,
+.gradio-container-4-40-0 #txt2img_script_container #txt2img_controlnet > .styler,
+.gradio-container-4-40-0 #img2img_script_container #img2img_controlnet > .styler {
+  gap: 3px;
+  width: 100%;
+  overflow: visible;
+}
